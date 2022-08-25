@@ -1,5 +1,7 @@
 package com.cg.services;
 
+import java.security.Certificate;
+
 import com.cg.entities.Student;
 import com.cg.repository.IStudentRepository;
 import com.cg.repository.IStudentRepositoryImpl;
@@ -43,28 +45,31 @@ public class IStudentServiceImpl implements IStudentService
 	}
 
 	@Override
-	public Student addCertificate(Student std) {
+	public boolean addCertificate(Certificate certificate) {
 		dao.beginTransaction();
-		dao.addCertificate(std);
+		dao.addCertificate(certificate);
 		dao.commitTransaction();
-		return std;
+		return true;
 	}
 	
 	@Override
-	public Student updateCertificate(Student std) {
+	public boolean updateCertificate(Certificate certificate) {
 		dao.beginTransaction();
-		dao.addCertificate(std);
+		dao.addCertificate(certificate);
 		dao.commitTransaction();
-		return std;
+		return true;
 	}
 
 	@Override
-	public Student deleteStudent(Student std) {
+	public boolean deleteStudent(long id) {
 		dao.beginTransaction();
-		dao.deleteStudent(std);
+		dao.deleteStudent(id);
 		dao.commitTransaction();
-		return std;
-		
+		return false;
 	}
+
+	
+		
+	
 
 }

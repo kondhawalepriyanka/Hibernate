@@ -1,4 +1,6 @@
 package com.cg.repository;
+import java.security.Certificate;
+
 import javax.persistence.EntityManager;
 import com.cg.entities.Student;
 
@@ -38,24 +40,6 @@ public class IStudentRepositoryImpl implements IStudentRepository
 	}
 
 	@Override
-	public Student deleteStudent(Student std) {
-	em.remove(std);
-		return std;
-	}
-	
-	@Override
-	public Student addCertificate(Student std) {
-		em.persist(std);
-		return std;
-	}
-
-	@Override
-	public Student updateCertificate(Student std) {
-		em.merge(std);
-		return std;
-	}
-	
-	@Override
 	public void commitTransaction() 
 	{
 		em.getTransaction().commit();
@@ -66,4 +50,19 @@ public class IStudentRepositoryImpl implements IStudentRepository
 	{
 		em.getTransaction().begin();
 		}
+	@Override
+	public boolean deleteStudent(long std) {
+		em.remove(std);
+		return false;
+	}
+	@Override
+	public Student addCertificate(Certificate certificate) {
+		em.persist(certificate);
+		return null;
+	}
+	@Override
+	public Student updateCertificate(Certificate certificate) {
+		em.merge(certificate);
+		return null;
+	}
 }
