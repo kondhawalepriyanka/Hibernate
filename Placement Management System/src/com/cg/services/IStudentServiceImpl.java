@@ -55,7 +55,7 @@ public class IStudentServiceImpl implements IStudentService
 	@Override
 	public boolean updateCertificate(Certificate certificate) {
 		dao.beginTransaction();
-		dao.addCertificate(certificate);
+		dao.updateCertificate(certificate);
 		dao.commitTransaction();
 		return true;
 	}

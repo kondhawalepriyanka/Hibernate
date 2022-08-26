@@ -1,13 +1,20 @@
 package com.cg.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="Student")
+
 public class Student {
 	
+	//one to one mapping
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="Certificate")
 	
 	@Id
 	private int ID;
@@ -19,6 +26,7 @@ public class Student {
 	private String COURSE;
 	private String CERTIFICATE;
 	private String QUALIFICATION;
+	
 	
 	//getters and setters method
 	public int getID() {
