@@ -5,10 +5,12 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name="Employee")
 public class Employee implements Serializable
 {
+	@SuppressWarnings("unused")
 	private static final long SerialVersionUID=1L;
 	@Id
 	private int id;

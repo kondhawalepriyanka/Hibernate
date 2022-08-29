@@ -1,44 +1,50 @@
 package com.dao;
 
+import javax.persistence.EntityManager;
+
 import com.entities.Employee;
 
 public class EmployeeRepositoryImpl implements IEmployeeRepository
 {
+	private EntityManager em;
+	
+
+	public EmployeeRepositoryImpl() {
+		super();
+		em=JPAUtil.getEntityManager();
+	}
 
 	@Override
 	public void addEmployee(Employee emp) {
-		
+		em.persist(emp);
 		
 	}
 
 	@Override
 	public void updateEmployee(Employee emp) {
 		
-		
+		em.merge(emp);
 	}
 
 	@Override
 	public Employee getEmployeeByID(int ID) {
-		// TODO Auto-generated method stub
-		return null;
+		Employee emp=em.find(Employee.class, ID);
+		return emp;
 	}
 
 	@Override
 	public void removeEmployee(Employee emp) {
-		// TODO Auto-generated method stub
-		
+		em.remove(emp);	
 	}
 
 	@Override
 	public void commitTransaction() {
-		// TODO Auto-generated method stub
-		
+		em.getTransaction().commit();
 	}
 
 	@Override
 	public void beginTransaction() {
-		// TODO Auto-generated method stub
-		
+		em.getTransaction().begin();	
 	}
 
 }
