@@ -10,7 +10,7 @@ public class Client {
 		IEmployeeService service=new EmployeeServiceImpl();
 		Employee emp = new Employee();
 		emp.setId(2);
-		emp.setName("PQRS");
+		emp.setName("Priyanka");
 		service.addEmployee(emp);
 	}
 
